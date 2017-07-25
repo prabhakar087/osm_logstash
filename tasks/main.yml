@@ -1,0 +1,15 @@
+---
+# tasks file for logstash
+
+- name: Include OS Specific setup tasks
+  include: logstash{{ ansible_os_family }}.yml
+
+- include: config.yml
+#- include: ssl.yml
+#- include: plugins.yml
+
+- name: Ensure Logstash is started and enabled on boot.
+  service:
+    name: logstash
+    state: started
+#    enabled: "{{ logstash_enabled_on_boot }}"

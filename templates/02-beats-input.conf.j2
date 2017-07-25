@@ -1,0 +1,38 @@
+input {
+  beats {
+    port => 5044
+  }
+}
+
+#filter {
+#    ruby {
+#            code => "
+#                event['local_date'] = Time.now.strftime('%Y-%m-%d')
+#            "
+#    }
+#}
+
+
+#output {
+#if [type] == 'localhost-access' {
+#    file{
+#        path => "/var/log/remote/%{fields[logdir]}/%{fields[serverdir]}/%{fields[filename]}_%{local_date}.txt_%{fields[host_name]}"
+#        message_format => "%{[message]}"
+#    }
+#}
+#
+#else if [type] == 'localhost' {
+#    file{
+#        path => "/var/log/remote/%{fields[logdir]}/%{fields[serverdir]}/%{fields[filename]}_%{local_date}.log_%{fields[host_name]}"
+#        message_format => "%{[message]}"
+#    }
+#}
+#
+#else{
+#
+#	file{    
+#             path => "/var/log/remote/%{fields[logdir]}/%{fields[serverdir]}/%{fields[filename]}_%{local_date}_%{fields[host_name]}"
+#              message_format => "%{[message]}"
+#    }
+#} 
+#}
